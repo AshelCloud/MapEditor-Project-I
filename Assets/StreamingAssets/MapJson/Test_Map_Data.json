@@ -1,5 +1,5 @@
 {
-  "keys": [ "1" ],
+  "keys": [ "Test_Map_Data" ],
   "values": [
     {
       "Tiles": [
@@ -798,8 +798,8 @@
       ],
       "Prefabs": [],
       "PlayerStartPosition": {
-        "x": 0.0,
-        "y": 0.5,
+        "x": -7.0,
+        "y": -3.5,
         "z": 0.0
       }
     }
