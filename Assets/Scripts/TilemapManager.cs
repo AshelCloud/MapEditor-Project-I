@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -6,6 +7,9 @@ using UnityEngine.Tilemaps;
 /*
                                    맵에디터 주요 클래스
                                    후에 클래스 크기가 커지면 Util함수들 클래스 분할해서 사용
+
+                                   TODO: 맵 데이터 연결
+                                   EX: 1번맵 클리어 -> 2번맵 일시 1 -> 2번 맵데이터 연결
  */
 
 public class TilemapManager : MonoBehaviour
@@ -20,13 +24,16 @@ public class TilemapManager : MonoBehaviour
     [Header("Settings")]
     public string fileName;
     public Tilemap[] tilemaps;
-    public GameObject playerPositionFlag;
+    public GameObject playerStartPositionFlag;
+    public GameObject playerEndPositionFlag;
 
     //데이터 저장 Dictionary
     private Dictionary<string, MapData> mapDatas;
 
     //TilemapLoad순서 외 체크용 Property
-    private bool PlayerPositionSettingMode { get; set; }
+    private bool PlayerStartPositionSettingMode { get; set; }
+    private bool PlayerEndPositionSettingMode { get; set; }
+
     private int TilemapLoadIndex { get; set; }
 
     private void Awake()
@@ -39,18 +46,39 @@ public class TilemapManager : MonoBehaviour
         }
 
         //GUI용 플레이어 위치 오브젝트 로드
-        if(playerPositionFlag == null)
+        if(playerStartPositionFlag == null)
         {
-            playerPositionFlag = Resources.Load<GameObject>(PrefabFilePath + "Flag");
-            var go = Instantiate(playerPositionFlag, Vector3.zero, Quaternion.identity);
-            go.SetActive(false);
-
-            playerPositionFlag = go;
+            playerStartPositionFlag = CreatePlayerFlag();
+        }
+        if(playerEndPositionFlag == null)
+        {
+            playerEndPositionFlag = CreatePlayerFlag(true);
         }
 
         //Tilemap은 Hierearchy상 맨위 Tilemap부터 0번째
         //그 순서로 로딩하기 위한 초기화
         TilemapLoadIndex = 0;
+    }
+
+    //Flag 생성코드
+    //임시
+    //필요시 수정
+    //isFliped는 EndPosition을 구별하기 위해 사용
+    private GameObject CreatePlayerFlag(bool isFliped = false)
+    {
+        var flagResource = Resources.Load<GameObject>(PrefabFilePath + "Flag");
+        var go = Instantiate(flagResource, Vector3.zero, Quaternion.identity);
+        if(isFliped)
+        {
+            Vector3 scale = go.transform.lossyScale;
+            scale.x *= -1;
+
+            go.transform.localScale = scale;
+        }
+
+        go.SetActive(false);
+
+        return go;
     }
 
     private void OnGUI()
@@ -67,27 +95,46 @@ public class TilemapManager : MonoBehaviour
             JsonToTilemap();
         }
 
-        PlayerPositionSettingMode = GUI.Toggle(new Rect(680, 10, 200, 30), PlayerPositionSettingMode, "PlayerPositionSettingMode");
+        PlayerStartPositionSettingMode = GUI.Toggle(new Rect(680, 10, 200, 30), PlayerStartPositionSettingMode, "PlayerStartPositionSettingMode");
+        PlayerEndPositionSettingMode = GUI.Toggle(new Rect(680, 40, 200, 30), PlayerEndPositionSettingMode, "PlayerEndPositionSettingMode");
     }
 
     private void Update()
     {
-        if(PlayerPositionSettingMode)
+        if(PlayerStartPositionSettingMode)
         {
-            playerPositionFlag.SetActive(true);
-
-            //Input.mousePosition은 z가 -10으로 고정되기때문에 후처리
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0;
-            //맵에디터 편의상 Grid에 딱맞게 Vector3Int로 변환
-            //이 부분은 상의후 추후에 수정가능
-            playerPositionFlag.transform.position = Vector3ToVector3Int(mousePosition);
+            FlagMove(playerStartPositionFlag.transform);
 
             if(Input.GetMouseButtonDown(0))
             {
-                PlayerPositionSettingMode = false;
+                PlayerStartPositionSettingMode = false;
             }
         }
+
+        if(PlayerEndPositionSettingMode)
+        {
+            FlagMove(playerEndPositionFlag.transform);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                PlayerEndPositionSettingMode = false;
+            }
+        }
+    }
+
+    //플레이어 깃발 움직이는 함수
+    //임시
+    //필요시 수정
+    private void FlagMove(Transform flag)
+    {
+        flag.gameObject.SetActive(true);
+
+        //Input.mousePosition은 z가 -10으로 고정되기때문에 후처리
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;
+        //맵에디터 편의상 Grid에 딱맞게 Vector3Int로 변환
+        //이 부분은 상의후 추후에 수정가능
+        flag.position = Vector3ToVector3Int(mousePosition);
     }
 
     //Tilemap 특성상 Vector3을 Vector3Int으로 바꿀일이 많아서 따로 함수작성
@@ -156,15 +203,12 @@ public class TilemapManager : MonoBehaviour
             }
         }
 
-        //맵끼임방지를 위해 플레이어위치 살짝 보정
-        Vector3 playerPosition = playerPositionFlag.transform.position;
-        playerPosition.y += 0.5f;
-
         MapData mapData = new MapData
         {
             Tiles = tileDatas,
             Prefabs = prefabDatas,
-            PlayerStartPosition = playerPosition
+            PlayerStartPosition = playerStartPositionFlag.transform.position,
+            PlayerEndPosition = playerEndPositionFlag.transform.position
         };
 
         mapDatas.Add(fileName, mapData);
@@ -279,4 +323,5 @@ public class MapData
     public List<TileData> Tiles;
     public List<PrefabData> Prefabs;
     public Vector3 PlayerStartPosition;
+    public Vector3 PlayerEndPosition;
 }
