@@ -1,0 +1,1869 @@
+{
+  "keys": [ "TestMapData" ],
+  "values": [
+    {
+      "Tiles": [
+        {
+          "Name": "props1_1137",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": -2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": -2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1138",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": -2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": -2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1129",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": -1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1130",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": -1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1131",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": -1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": -1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1111",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": 0,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1112",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": 0,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1113",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": 0,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1114",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1070",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": 1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1071",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": 1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1072",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": 1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1073",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1074",
+          "WorldPlace": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 1,
+            "y": 1,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1014",
+          "WorldPlace": {
+            "x": -4.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -4,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1015",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1016",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1017",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1018",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_1019",
+          "WorldPlace": {
+            "x": 1.0,
+            "y": 2.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 1,
+            "y": 2,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_951",
+          "WorldPlace": {
+            "x": -4.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -4,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_952",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_953",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_954",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_955",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_956",
+          "WorldPlace": {
+            "x": 1.0,
+            "y": 3.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 1,
+            "y": 3,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_884",
+          "WorldPlace": {
+            "x": -4.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -4,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_885",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_886",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_888",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_889",
+          "WorldPlace": {
+            "x": 1.0,
+            "y": 4.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 1,
+            "y": 4,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        }
+      ],
+      "Prefabs": [
+        {
+          "Name": "Test_Prefab1",
+          "Position": {
+            "x": 4.5,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab1",
+          "Position": {
+            "x": 4.5,
+            "y": -1.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab1",
+          "Position": {
+            "x": 6.5,
+            "y": -1.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab1",
+          "Position": {
+            "x": 6.5,
+            "y": 0.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab2",
+          "Position": {
+            "x": 4.5,
+            "y": -3.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab2",
+          "Position": {
+            "x": 5.5,
+            "y": -4.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab2",
+          "Position": {
+            "x": 6.5,
+            "y": -3.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab2",
+          "Position": {
+            "x": 7.5,
+            "y": -4.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "Test_Prefab2",
+          "Position": {
+            "x": 8.5,
+            "y": -3.5,
+            "z": 0.0
+          },
+          "Rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+          },
+          "Scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "BaseTileMap": {
+            "Name": "Prefab Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

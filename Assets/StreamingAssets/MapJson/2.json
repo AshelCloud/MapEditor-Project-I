@@ -1,0 +1,807 @@
+{
+  "keys": [ "2" ],
+  "values": [
+    {
+      "Tiles": [
+        {
+          "Name": "props1_884",
+          "WorldPlace": {
+            "x": -9.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -9,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_885",
+          "WorldPlace": {
+            "x": -8.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -8,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_886",
+          "WorldPlace": {
+            "x": -7.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -7,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -6.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -6,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_888",
+          "WorldPlace": {
+            "x": -5.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -5,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -4.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -4,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -3.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -3,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -2.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -2,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": -1.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": -1,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 0.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 0,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 1.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 1,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 2.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 2,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 3.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 3,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 4.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 4,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 5.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 5,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 6.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 6,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 7.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 7,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        },
+        {
+          "Name": "props1_887",
+          "WorldPlace": {
+            "x": 8.0,
+            "y": -5.0,
+            "z": 0.0
+          },
+          "LocalPlace": {
+            "x": 8,
+            "y": -5,
+            "z": 0
+          },
+          "BaseTilemap": {
+            "Name": "Tilemap",
+            "Position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "Rotation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            },
+            "Scale": {
+              "x": 1.0,
+              "y": 1.0,
+              "z": 1.0
+            },
+            "AnimationFrameRate": 1.0,
+            "Color": {
+              "r": 1.0,
+              "g": 1.0,
+              "b": 1.0,
+              "a": 1.0
+            },
+            "TileAnchor": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.0
+            }
+          }
+        }
+      ],
+      "Prefabs": [],
+      "PlayerStartPosition": {
+        "x": -7.0,
+        "y": -3.5,
+        "z": 0.0
+      }
+    }
+  ]
+}
