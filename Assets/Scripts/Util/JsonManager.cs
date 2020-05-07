@@ -2,6 +2,10 @@
 using System.Text;
 using UnityEngine;
 
+/*
+                            Json 파일쓰고 읽기에 필요한 Util함수들
+ */
+
 public class JsonManager
 {
     public static void ObjectToJsonWithCreate(string createPath, string fileName, object obj)
