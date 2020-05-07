@@ -7,9 +7,6 @@ using UnityEngine.Tilemaps;
 /*
                                    맵에디터 주요 클래스
                                    후에 클래스 크기가 커지면 Util함수들 클래스 분할해서 사용
-
-                                   TODO: 맵 데이터 연결
-                                   EX: 1번맵 클리어 -> 2번맵 일시 1 -> 2번 맵데이터 연결
  */
 
 public class TilemapManager : MonoBehaviour
@@ -23,6 +20,7 @@ public class TilemapManager : MonoBehaviour
     //저장될 Json파일이름, 타일맵들, 플레이어위치 GUI용 오브젝트
     [Header("Settings")]
     public string fileName;
+    public string mapName;
     public Tilemap[] tilemaps;
     public GameObject playerStartPositionFlag;
     public GameObject playerEndPositionFlag;
@@ -30,9 +28,10 @@ public class TilemapManager : MonoBehaviour
     //데이터 저장 Dictionary
     private Dictionary<string, MapData> mapDatas;
 
-    //TilemapLoad순서 외 체크용 Property
+    //체크용 Property
     private bool PlayerStartPositionSettingMode { get; set; }
     private bool PlayerEndPositionSettingMode { get; set; }
+
 
     private int TilemapLoadIndex { get; set; }
 
@@ -54,6 +53,10 @@ public class TilemapManager : MonoBehaviour
         {
             playerEndPositionFlag = CreatePlayerFlag(true);
         }
+
+        //GUI 표시
+        fileName = "File Name";
+        mapName = "Map Name";
 
         //Tilemap은 Hierearchy상 맨위 Tilemap부터 0번째
         //그 순서로 로딩하기 위한 초기화
@@ -84,8 +87,9 @@ public class TilemapManager : MonoBehaviour
     private void OnGUI()
     {
         fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
+        mapName = GUI.TextField(new Rect(210, 10, 200, 20), mapName, 25);
 
-        if(GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
+        if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {
             TilemapToJson();
         }
@@ -95,8 +99,8 @@ public class TilemapManager : MonoBehaviour
             JsonToTilemap();
         }
 
-        PlayerStartPositionSettingMode = GUI.Toggle(new Rect(680, 10, 200, 30), PlayerStartPositionSettingMode, "PlayerStartPositionSettingMode");
-        PlayerEndPositionSettingMode = GUI.Toggle(new Rect(680, 40, 200, 30), PlayerEndPositionSettingMode, "PlayerEndPositionSettingMode");
+        PlayerStartPositionSettingMode = GUI.Toggle(new Rect(650, 10, 200, 30), PlayerStartPositionSettingMode, "PlayerStartPositionSettingMode");
+        PlayerEndPositionSettingMode = GUI.Toggle(new Rect(650, 40, 200, 30), PlayerEndPositionSettingMode, "PlayerEndPositionSettingMode");
     }
 
     private void Update()
@@ -132,9 +136,11 @@ public class TilemapManager : MonoBehaviour
         //Input.mousePosition은 z가 -10으로 고정되기때문에 후처리
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
+
+        flag.position = mousePosition;
         //맵에디터 편의상 Grid에 딱맞게 Vector3Int로 변환
-        //이 부분은 상의후 추후에 수정가능
-        flag.position = Vector3ToVector3Int(mousePosition);
+        //현재 필요없다고 판단
+        //flag.position = Vector3ToVector3Int(mousePosition);
     }
 
     //Tilemap 특성상 Vector3을 Vector3Int으로 바꿀일이 많아서 따로 함수작성
@@ -202,13 +208,21 @@ public class TilemapManager : MonoBehaviour
                 prefabDatas.Add(prefabData);
             }
         }
+        
+        //보정
+        //플레이어가 땅에 박히는것을 방지
+        //TODO: 매직넘버 교체
+        Vector3 startPosition = playerStartPositionFlag.transform.position;
+        startPosition.y += 2f;
+        Vector3 endPosition = playerEndPositionFlag.transform.position;
+        endPosition.y += 2f;
 
         MapData mapData = new MapData
         {
             Tiles = tileDatas,
             Prefabs = prefabDatas,
-            PlayerStartPosition = playerStartPositionFlag.transform.position,
-            PlayerEndPosition = playerEndPositionFlag.transform.position
+            PlayerStartPosition = startPosition,
+            PlayerEndPosition = endPosition
         };
 
         mapDatas.Add(fileName, mapData);
@@ -240,7 +254,14 @@ public class TilemapManager : MonoBehaviour
                 GameObject go = Instantiate(Resources.Load<GameObject>(PrefabFilePath + prefab.Name), prefab.Position, prefab.Rotation, tilemap.transform);
                 go.transform.localScale = prefab.Scale;
             }
+
+            //플레이어 생성코드
+            //임시
+            //필요시 삭제
+            var playerReosurce = Resources.Load<GameObject>(PrefabFilePath + "Player");
+            var player = Instantiate(playerReosurce, data.Value.PlayerStartPosition, Quaternion.identity);
         }
+
     }
 
     //Tilemap 정보갱신

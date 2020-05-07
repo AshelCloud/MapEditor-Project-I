@@ -905,5 +905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: 
+  mapName: 
   tilemaps: []
-  playerPositionFlag: {fileID: 0}
+  playerStartPositionFlag: {fileID: 0}
+  playerEndPositionFlag: {fileID: 0}
