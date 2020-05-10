@@ -20,7 +20,7 @@ public class TilemapManager : MonoBehaviour
     //저장될 Json파일이름, 타일맵들, 플레이어위치 GUI용 오브젝트
     [Header("Settings")]
     public string fileName;
-    public string mapName;
+    public string mapIndex;
     public Tilemap[] tilemaps;
     public GameObject playerStartPositionFlag;
     public GameObject playerEndPositionFlag;
@@ -56,7 +56,7 @@ public class TilemapManager : MonoBehaviour
 
         //GUI 표시
         fileName = "File Name";
-        mapName = "Map Name";
+        mapIndex = "Map Index";
 
         //Tilemap은 Hierearchy상 맨위 Tilemap부터 0번째
         //그 순서로 로딩하기 위한 초기화
@@ -87,7 +87,7 @@ public class TilemapManager : MonoBehaviour
     private void OnGUI()
     {
         fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
-        mapName = GUI.TextField(new Rect(210, 10, 200, 20), mapName, 25);
+        mapIndex = GUI.TextField(new Rect(210, 10, 200, 20), mapIndex, 25);
 
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {
@@ -225,7 +225,7 @@ public class TilemapManager : MonoBehaviour
             PlayerEndPosition = endPosition
         };
 
-        mapDatas.Add(fileName, mapData);
+        mapDatas.Add(mapIndex, mapData);
 
         JsonManager.ObjectToJsonWithCreate(JsonFilePath, fileName, new Serialization<string, MapData>(mapDatas));
     }
