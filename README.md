@@ -30,5 +30,5 @@ LoadTilemap은 맵로드가 잘되나 테스트하기위한 버튼입니다.<br>
 ![PrefabBrushSetting](Images/PrefabBrushSetting.png)<br>
 프리팹을 넣어줍니다.<br>
 
-![ChangeBrush](Images/ChangeBrush.png)
+![ChangeBrush](Images/ChangeBrush.png)<br>
 이렇게 Brush를 바꿔주시고 Tilemap을 선택해 그려주시기만 하면됩니다.<br>
