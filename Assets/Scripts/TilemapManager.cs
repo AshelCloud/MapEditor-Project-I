@@ -13,9 +13,11 @@ public class TilemapManager : MonoBehaviour
 {
     //경로
     //웬만해서는 건드리지않기
-    private string TileAssetFilePath = "TileAssets/";
-    private string PrefabFilePath = "Prefabs/";
-    private string JsonFilePath = Application.streamingAssetsPath + "/MapJson";
+    private const string TileAssetFilePath = "TileAssets/";
+    private const string PrefabFilePath = "Prefabs/";
+
+    //Application.dataPath와 연동해서 사용
+    private const string JsonFilePath = "/Resources/MapJsons";
 
     //저장될 Json파일이름, 타일맵들, 플레이어위치 GUI용 오브젝트
     [Header("Settings")]
@@ -227,7 +229,7 @@ public class TilemapManager : MonoBehaviour
 
         mapDatas.Add(mapIndex, mapData);
 
-        JsonManager.ObjectToJsonWithCreate(JsonFilePath, fileName, new Serialization<string, MapData>(mapDatas));
+        JsonManager.ObjectToJsonWithCreate(Application.dataPath + JsonFilePath, fileName, new Serialization<string, MapData>(mapDatas));
     }
 
     //Json로드 함수
@@ -235,7 +237,7 @@ public class TilemapManager : MonoBehaviour
     //본 프로젝트로 옮겨서 사용
     public void JsonToTilemap()
     {
-        mapDatas = JsonManager.LoadJson<Serialization<string, MapData>>(JsonFilePath, fileName).ToDictionary();
+        mapDatas = JsonManager.LoadJson<Serialization<string, MapData>>(Application.dataPath + JsonFilePath, fileName).ToDictionary();
 
         //데이터 로드
         //데이터테이블 변경시 같이 변경해야함
