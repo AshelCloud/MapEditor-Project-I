@@ -32,3 +32,10 @@ LoadTilemap은 맵로드가 잘되나 테스트하기위한 버튼입니다.<br>
 
 ![ChangeBrush](Images/ChangeBrush.png)<br>
 이렇게 Brush를 바꿔주시고 Tilemap을 선택해 그려주시기만 하면됩니다.<br>
+
+## 파일정리
+모든 파일은 Resources안에 저장합니다.<br>
+Resources/MapJsons: Json 파일을 저장합니다. <br>
+Resources/TileSprites: Sprite 원본을 저장합니다.<br>
+Resources/TileAssets: Sprite로 만든 Tile Assets을 저장합니다.<br>
+Resources/Prefabs: Prefab을 저장합니다.<br>
