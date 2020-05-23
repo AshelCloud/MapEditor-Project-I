@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -34,17 +35,11 @@ public class TilemapManager : MonoBehaviour
     private bool PlayerStartPositionSettingMode { get; set; }
     private bool PlayerEndPositionSettingMode { get; set; }
 
-
-    private int TilemapLoadIndex { get; set; }
-
     private void Awake()
     {
         mapDatas = new Dictionary<string, MapData>();
 
-        if (0 >= tilemaps.Length)
-        {
-            tilemaps = transform.GetComponentsInChildren<Tilemap>();
-        }
+        tilemaps = transform.GetComponentsInChildren<Tilemap>();
 
         //GUI용 플레이어 위치 오브젝트 로드
         if(playerStartPositionFlag == null)
@@ -59,10 +54,6 @@ public class TilemapManager : MonoBehaviour
         //GUI 표시
         fileName = "File Name";
         mapIndex = "Map Index";
-
-        //Tilemap은 Hierearchy상 맨위 Tilemap부터 0번째
-        //그 순서로 로딩하기 위한 초기화
-        TilemapLoadIndex = 0;
     }
 
     //Flag 생성코드
@@ -98,7 +89,7 @@ public class TilemapManager : MonoBehaviour
 
         if (GUI.Button(new Rect(10, 50, 200, 20), "LoadTilemap"))
         {
-            JsonToTilemap();
+            StartCoroutine(JsonToTilemap());
         }
 
         PlayerStartPositionSettingMode = GUI.Toggle(new Rect(650, 10, 200, 30), PlayerStartPositionSettingMode, "PlayerStartPositionSettingMode");
@@ -175,7 +166,8 @@ public class TilemapManager : MonoBehaviour
                 Scale = tilemap.transform.lossyScale,
                 AnimationFrameRate = tilemap.animationFrameRate,
                 Color = tilemap.color,
-                TileAnchor = tilemap.tileAnchor
+                TileAnchor = tilemap.tileAnchor,
+                OrderInLayer = tilemap.GetComponent<TilemapRenderer>().sortingOrder
             };
 
             foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
@@ -235,9 +227,19 @@ public class TilemapManager : MonoBehaviour
     //Json로드 함수
     //테스트용
     //본 프로젝트로 옮겨서 사용
-    public void JsonToTilemap()
+    public IEnumerator JsonToTilemap()
     {
         mapDatas = JsonManager.LoadJson<Serialization<string, MapData>>(Application.dataPath + JsonFilePath, fileName).ToDictionary();
+      
+        //현재 있는 맵들 다 삭제하고 진행
+        foreach (var tilemap in tilemaps)
+        {
+            Destroy(tilemap.gameObject);
+        }
+        tilemaps = null;
+
+        //Destroy가 느리기때문에 다 삭제될때까지 기다림
+        yield return new WaitUntil(() => transform.childCount == 0);
 
         //데이터 로드
         //데이터테이블 변경시 같이 변경해야함
@@ -248,6 +250,7 @@ public class TilemapManager : MonoBehaviour
                 var tilemap = UpdateTilemapDataWithCreate(tile.BaseTilemap);
 
                 tilemap.SetTile(tile.LocalPlace, Resources.Load<Tile>(TileAssetFilePath + tile.Name));
+
             }
             foreach(var prefab in data.Value.Prefabs)
             {
@@ -264,6 +267,7 @@ public class TilemapManager : MonoBehaviour
             var player = Instantiate(playerReosurce, data.Value.PlayerStartPosition, Quaternion.identity);
         }
 
+        yield return null;
     }
 
     //Tilemap 정보갱신
@@ -273,21 +277,25 @@ public class TilemapManager : MonoBehaviour
     public Tilemap UpdateTilemapDataWithCreate(TilemapData tilemapData)
     {
         var maps = transform.GetComponentsInChildren<Tilemap>();
+        
+        foreach(var m in maps)
+        {
+            //자식중에 같은게 있으면 리턴
+            if (m.name == tilemapData.Name)
+            {
+                return m;
+            }
+        }
 
         Tilemap map;
 
-        //Tilemap 존재시 정보만 업데이트
-        //혹은 Tilemap 생성
-        if (TilemapLoadIndex >= maps.Length)
-        {
-            GameObject go = new GameObject();
-            go.transform.SetParent(transform);
-            map = go.AddComponent<Tilemap>();
-        }
-        else
-        {
-            map = maps[TilemapLoadIndex];
-        }
+        //없으면 새로만들어서 정보업데이트후 리턴
+        GameObject go = new GameObject();
+        go.transform.SetParent(transform);
+
+        //TilemapRenderer를 추가하면 Tilemap도 추가됨
+        go.AddComponent<TilemapRenderer>();
+        map = go.GetComponent<Tilemap>();
 
         //정보 업데이트
         //데이터테이블 변경시 같이 변경해야함
@@ -298,6 +306,7 @@ public class TilemapManager : MonoBehaviour
         map.animationFrameRate = tilemapData.AnimationFrameRate;
         map.color = tilemapData.Color;
         map.tileAnchor = tilemapData.TileAnchor;
+        map.GetComponent<TilemapRenderer>().sortingOrder = tilemapData.OrderInLayer;
 
         return map;
     }
@@ -338,6 +347,7 @@ public class TilemapData
     public float AnimationFrameRate;
     public Color Color;
     public Vector3 TileAnchor;
+    public int OrderInLayer;
 }
 
 [System.Serializable]
