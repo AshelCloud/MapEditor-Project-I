@@ -244,7 +244,10 @@ public class TilemapManager : MonoBehaviour
         //현재 있는 맵들 다 삭제하고 진행
         foreach (var tilemap in tilemaps)
         {
-            Destroy(tilemap.gameObject);
+            if(tilemap != null)
+            {
+                Destroy(tilemap.gameObject);
+            }
         }
         tilemaps = null;
 
