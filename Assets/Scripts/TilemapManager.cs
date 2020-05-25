@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
 
 /*
@@ -172,17 +173,26 @@ public class TilemapManager : MonoBehaviour
 
             foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
             {
-                if (tilemap.GetTile(pos) == null) { continue; }
+                Vector3Int localPlace = pos;
 
-                TileData tileData = new TileData
+                Vector3 place = tilemap.CellToWorld(localPlace);
+
+                if(tilemap.HasTile(localPlace))
                 {
-                    Name = tilemap.GetTile(pos).name,
-                    WorldPlace = tilemap.CellToWorld(pos),
-                    LocalPlace = pos,
-                    BaseTilemap = tilemapData
-                };
+                    var tile = tilemap.GetTile(localPlace);
+                    TileData tileData = new TileData
+                    {
+                        Name = tile.name,
+                        WorldPlace = place,
+                        LocalPlace = localPlace,
+                        Matrix = tilemap.GetTransformMatrix(localPlace),
+                        BaseTilemap = tilemapData
+                    };
 
-                tileDatas.Add(tileData);
+                    tileDatas.Add(tileData);
+                }
+
+                //Debug.Log(tilemap.GetTile<Tile>(localPlace).sprite.name);
             }
 
             foreach (Transform trans in tilemap.GetComponentsInChildren<Transform>())
@@ -250,7 +260,7 @@ public class TilemapManager : MonoBehaviour
                 var tilemap = UpdateTilemapDataWithCreate(tile.BaseTilemap);
 
                 tilemap.SetTile(tile.LocalPlace, Resources.Load<Tile>(TileAssetFilePath + tile.Name));
-
+                tilemap.SetTransformMatrix(tile.LocalPlace, tile.Matrix);
             }
             foreach(var prefab in data.Value.Prefabs)
             {
@@ -324,6 +334,7 @@ public class TileData
     public string Name;
     public Vector3 WorldPlace;
     public Vector3Int LocalPlace;
+    public Matrix4x4 Matrix;
     public TilemapData BaseTilemap;
 }
 
