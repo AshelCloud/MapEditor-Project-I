@@ -168,7 +168,8 @@ public class TilemapManager : MonoBehaviour
                 AnimationFrameRate = tilemap.animationFrameRate,
                 Color = tilemap.color,
                 TileAnchor = tilemap.tileAnchor,
-                OrderInLayer = tilemap.GetComponent<TilemapRenderer>().sortingOrder
+                OrderInLayer = tilemap.GetComponent<TilemapRenderer>().sortingOrder,
+                IsHaveCollider = tilemap.GetComponent<TilemapCollider2D>() != null
             };
 
             foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
@@ -179,7 +180,7 @@ public class TilemapManager : MonoBehaviour
 
                 if(tilemap.HasTile(localPlace))
                 {
-                    var tile = tilemap.GetTile(localPlace);
+                    var tile = tilemap.GetTile<Tile>(localPlace);
                     TileData tileData = new TileData
                     {
                         Name = tile.name,
@@ -308,6 +309,10 @@ public class TilemapManager : MonoBehaviour
 
         //TilemapRenderer를 추가하면 Tilemap도 추가됨
         go.AddComponent<TilemapRenderer>();
+        if (tilemapData.IsHaveCollider)
+        {
+            go.AddComponent<TilemapCollider2D>();
+        }
         map = go.GetComponent<Tilemap>();
 
         //정보 업데이트
@@ -362,6 +367,7 @@ public class TilemapData
     public Color Color;
     public Vector3 TileAnchor;
     public int OrderInLayer;
+    public bool IsHaveCollider;
 }
 
 [System.Serializable]
