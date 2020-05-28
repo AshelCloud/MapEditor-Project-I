@@ -39,3 +39,6 @@ Resources/MapJsons: Json 파일을 저장합니다. <br>
 Resources/TileSprites: Sprite 원본을 저장합니다.<br>
 Resources/TileAssets: Sprite로 만든 Tile Assets을 저장합니다.<br>
 Resources/Prefabs: Prefab을 저장합니다.<br>
+
+## Export
+![Export](Images/Export.png)
