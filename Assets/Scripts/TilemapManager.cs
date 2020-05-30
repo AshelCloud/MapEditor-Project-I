@@ -156,6 +156,7 @@ public class TilemapManager : MonoBehaviour
 
         TilemapRendererData rendererData = new TilemapRendererData()
         {
+            IsNotNull = true,
             SortOrder = renderer.sortOrder,
             Mode = renderer.mode,
             DetectChunkCullingBounds = renderer.detectChunkCullingBounds,
@@ -169,6 +170,7 @@ public class TilemapManager : MonoBehaviour
         {
             tilemapCollider2DData = new TilemapCollider2DData()
             {
+                IsNotNull = true,
                  IsTrigger = tilemapCollider2D.isTrigger,
                  UsedByEffector = tilemapCollider2D.usedByEffector,
                  UsedByComposite = tilemapCollider2D.usedByComposite,
@@ -182,6 +184,7 @@ public class TilemapManager : MonoBehaviour
         {
             rigidbody2DData = new Rigidbody2DData()
             {
+                IsNotNull = true,
                 BodyType = rigidbody2D.bodyType,
                 Simulated = rigidbody2D.simulated,
                 UseAutoMass = rigidbody2D.useAutoMass,
@@ -202,6 +205,7 @@ public class TilemapManager : MonoBehaviour
         {
             compositeCollider2DData = new CompositeCollider2DData()
             {
+                IsNotNull = true,
                 IsTrigger = compositeCollider2D.isTrigger,
                 UsedByEffector = compositeCollider2D.usedByEffector,
                 Offset = compositeCollider2D.offset,
@@ -263,8 +267,6 @@ public class TilemapManager : MonoBehaviour
 
                     tileDatas.Add(tileData);
                 }
-
-                //Debug.Log(tilemap.GetTile<Tile>(localPlace).sprite.name);
             }
 
             foreach (Transform trans in tilemap.GetComponentsInChildren<Transform>())
@@ -359,14 +361,14 @@ public class TilemapManager : MonoBehaviour
     //JsonToTilemap함수에 필요
     //테스트용
     //본 프로젝트로 옮겨서 사용
-    public Tilemap UpdateTilemapDataWithCreate(TilemapData tilemapData)
+    public Tilemap UpdateTilemapDataWithCreate(TilemapData mapData)
     {
         var maps = transform.GetComponentsInChildren<Tilemap>();
         
         foreach(var m in maps)
         {
             //자식중에 같은게 있으면 리턴
-            if (m.name == tilemapData.Name)
+            if (m.name == mapData.Name)
             {
                 return m;
             }
@@ -379,23 +381,70 @@ public class TilemapManager : MonoBehaviour
         go.transform.SetParent(transform);
 
         //TilemapRenderer를 추가하면 Tilemap도 추가됨
-        go.AddComponent<TilemapRenderer>();
-        //if (tilemapData.IsHaveCollider)
-        //{
-        //    go.AddComponent<TilemapCollider2D>();
-        //}
+        var renderer = go.AddComponent<TilemapRenderer>();
+        TilemapRendererData rendererData = mapData.TilemapRenderer;
+
+        renderer.sortOrder = rendererData.SortOrder;
+        renderer.mode = rendererData.Mode;
+        renderer.detectChunkCullingBounds = rendererData.DetectChunkCullingBounds;
+        renderer.sortingOrder = rendererData.OrderinLayer;
+       renderer.maskInteraction = rendererData.SpriteMaskInteraction;
+
+        if(mapData.TilemapCollider.IsNotNull)
+        {
+            var collider = go.AddComponent<TilemapCollider2D>();
+            var colliderData = mapData.TilemapCollider;
+
+            collider.isTrigger = colliderData.IsTrigger;
+            collider.usedByEffector = colliderData.UsedByEffector;
+            collider.usedByComposite = colliderData.UsedByComposite;
+            collider.offset = colliderData.Offset;
+        }
+
+        if(mapData.RigidBody2D.IsNotNull)
+        {
+            var rigidbody2D = go.AddComponent<Rigidbody2D>();
+            var rigidbodyData = mapData.RigidBody2D;
+
+            rigidbody2D.bodyType = rigidbodyData.BodyType;
+            rigidbody2D.simulated = rigidbodyData.Simulated;
+            rigidbody2D.useAutoMass = rigidbodyData.UseAutoMass;
+            rigidbody2D.mass = rigidbodyData.Mass;
+            rigidbody2D.drag = rigidbodyData.LinearDrag;
+            rigidbody2D.angularDrag = rigidbodyData.AngularDrag;
+            rigidbody2D.gravityScale = rigidbodyData.GravityScale;
+            rigidbody2D.collisionDetectionMode = rigidbodyData.CollisionDetection;
+            rigidbody2D.sleepMode = rigidbodyData.SleepingMode;
+            rigidbody2D.interpolation = rigidbodyData.Interpolate;
+            rigidbody2D.constraints = rigidbodyData.Constraints;
+        }
+
+        if(mapData.CompositeCollider.IsNotNull)
+        {
+            var collider = go.AddComponent<CompositeCollider2D>();
+            var colliderData = mapData.CompositeCollider;
+
+            collider.isTrigger = colliderData.IsTrigger;
+            collider.usedByEffector = colliderData.UsedByEffector;
+            collider.offset = colliderData.Offset;
+            collider.geometryType = colliderData.GeometryType;
+            collider.generationType = colliderData.GenerationType;
+            collider.vertexDistance = colliderData.VertexDistance;
+            collider.edgeRadius = colliderData.EdgeRadius;
+        }
+
         map = go.GetComponent<Tilemap>();
 
         //정보 업데이트
         //데이터테이블 변경시 같이 변경해야함
-        map.transform.name = tilemapData.Name;
-        map.transform.position = tilemapData.Position;
-        map.transform.rotation = tilemapData.Rotation;
-        map.transform.localScale = tilemapData.Scale;
-        map.animationFrameRate = tilemapData.AnimationFrameRate;
-        map.color = tilemapData.Color;
-        map.tileAnchor = tilemapData.TileAnchor;
-       //map.GetComponent<TilemapRenderer>().sortingOrder = tilemapData.OrderInLayer;
+        map.transform.name = mapData.Name;
+        map.transform.position = mapData.Position;
+        map.transform.rotation = mapData.Rotation;
+        map.transform.localScale = mapData.Scale;
+        map.animationFrameRate = mapData.AnimationFrameRate;
+        map.color = mapData.Color;
+        map.tileAnchor = mapData.TileAnchor;
+        map.orientation = mapData.Orientation;
 
         return map;
     }
@@ -430,6 +479,7 @@ public class PrefabData
 [System.Serializable]
 public class TilemapCollider2DData
 {
+    public bool IsNotNull;
     public bool IsTrigger;
     public bool UsedByEffector;
     public bool UsedByComposite;
@@ -439,6 +489,7 @@ public class TilemapCollider2DData
 [System.Serializable]
 public class Rigidbody2DData
 {
+    public bool IsNotNull;
     public RigidbodyType2D BodyType;
     public bool Simulated;
     public bool UseAutoMass;
@@ -455,6 +506,7 @@ public class Rigidbody2DData
 [System.Serializable]
 public class CompositeCollider2DData
 {
+    public bool IsNotNull;
     public bool IsTrigger;
     public bool UsedByEffector;
     public Vector2 Offset;
@@ -467,6 +519,7 @@ public class CompositeCollider2DData
 [System.Serializable]
 public class TilemapRendererData
 {
+    public bool IsNotNull;
     public TilemapRenderer.SortOrder SortOrder;
     public TilemapRenderer.Mode Mode;
     public TilemapRenderer.DetectChunkCullingBounds DetectChunkCullingBounds;
