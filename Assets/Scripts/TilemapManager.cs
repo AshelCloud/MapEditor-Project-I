@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
@@ -149,6 +150,87 @@ public class TilemapManager : MonoBehaviour
         return vi;
     }
 
+    public TilemapData CreateTilemapData(Tilemap tilemap)
+    {
+        var renderer = tilemap.GetComponent<TilemapRenderer>();
+
+        TilemapRendererData rendererData = new TilemapRendererData()
+        {
+            SortOrder = renderer.sortOrder,
+            Mode = renderer.mode,
+            DetectChunkCullingBounds = renderer.detectChunkCullingBounds,
+            OrderinLayer = renderer.sortingOrder,
+            SpriteMaskInteraction = renderer.maskInteraction
+        };
+
+        var tilemapCollider2D = tilemap.GetComponent<TilemapCollider2D>();
+        TilemapCollider2DData tilemapCollider2DData = null;
+        if(tilemapCollider2D != null)
+        {
+            tilemapCollider2DData = new TilemapCollider2DData()
+            {
+                 IsTrigger = tilemapCollider2D.isTrigger,
+                 UsedByEffector = tilemapCollider2D.usedByEffector,
+                 UsedByComposite = tilemapCollider2D.usedByComposite,
+                 Offset = tilemapCollider2D.offset
+            };
+        }
+
+        var rigidbody2D = tilemap.GetComponent<Rigidbody2D>();
+        Rigidbody2DData rigidbody2DData = null;
+        if (rigidbody2D != null)
+        {
+            rigidbody2DData = new Rigidbody2DData()
+            {
+                BodyType = rigidbody2D.bodyType,
+                Simulated = rigidbody2D.simulated,
+                UseAutoMass = rigidbody2D.useAutoMass,
+                Mass = rigidbody2D.mass,
+                LinearDrag = rigidbody2D.drag,
+                AngularDrag = rigidbody2D.angularDrag,
+                GravityScale = rigidbody2D.gravityScale,
+                CollisionDetection = rigidbody2D.collisionDetectionMode,
+                SleepingMode = rigidbody2D.sleepMode,
+                Interpolate = rigidbody2D.interpolation,
+                Constraints = rigidbody2D.constraints
+            };
+        }
+
+        var compositeCollider2D = tilemap.GetComponent<CompositeCollider2D>();
+        CompositeCollider2DData compositeCollider2DData = null;
+        if(compositeCollider2D != null)
+        {
+            compositeCollider2DData = new CompositeCollider2DData()
+            {
+                IsTrigger = compositeCollider2D.isTrigger,
+                UsedByEffector = compositeCollider2D.usedByEffector,
+                Offset = compositeCollider2D.offset,
+                GeometryType = compositeCollider2D.geometryType,
+                GenerationType = compositeCollider2D.generationType,
+                VertexDistance = compositeCollider2D.vertexDistance,
+                EdgeRadius = compositeCollider2D.edgeRadius
+            };
+        }
+
+        TilemapData tilemapData = new TilemapData()
+        {
+            Name = tilemap.name,
+            Position = tilemap.transform.position,
+            Rotation = tilemap.transform.rotation,
+            Scale = tilemap.transform.lossyScale,
+            AnimationFrameRate = tilemap.animationFrameRate,
+            Color = tilemap.color,
+            TileAnchor = tilemap.tileAnchor,
+            Orientation = tilemap.orientation,
+            TilemapRenderer = rendererData,
+            TilemapCollider = tilemapCollider2DData,
+            RigidBody2D = rigidbody2DData,
+            CompositeCollider = compositeCollider2DData
+        };
+
+        return tilemapData;
+    }
+
     //mapData를 Json으로 변환
     public void TilemapToJson()
     {
@@ -159,18 +241,7 @@ public class TilemapManager : MonoBehaviour
         //데이터테이블 변경시 같이 변경해야함
         foreach (var tilemap in tilemaps)
         {
-            TilemapData tilemapData = new TilemapData()
-            {
-                Name = tilemap.name,
-                Position = tilemap.transform.position,
-                Rotation = tilemap.transform.rotation,
-                Scale = tilemap.transform.lossyScale,
-                AnimationFrameRate = tilemap.animationFrameRate,
-                Color = tilemap.color,
-                TileAnchor = tilemap.tileAnchor,
-                OrderInLayer = tilemap.GetComponent<TilemapRenderer>().sortingOrder,
-                IsHaveCollider = tilemap.GetComponent<TilemapCollider2D>() != null
-            };
+            TilemapData tilemapData = CreateTilemapData(tilemap);
 
             foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
             {
@@ -309,10 +380,10 @@ public class TilemapManager : MonoBehaviour
 
         //TilemapRenderer를 추가하면 Tilemap도 추가됨
         go.AddComponent<TilemapRenderer>();
-        if (tilemapData.IsHaveCollider)
-        {
-            go.AddComponent<TilemapCollider2D>();
-        }
+        //if (tilemapData.IsHaveCollider)
+        //{
+        //    go.AddComponent<TilemapCollider2D>();
+        //}
         map = go.GetComponent<Tilemap>();
 
         //정보 업데이트
@@ -324,7 +395,7 @@ public class TilemapManager : MonoBehaviour
         map.animationFrameRate = tilemapData.AnimationFrameRate;
         map.color = tilemapData.Color;
         map.tileAnchor = tilemapData.TileAnchor;
-        map.GetComponent<TilemapRenderer>().sortingOrder = tilemapData.OrderInLayer;
+       //map.GetComponent<TilemapRenderer>().sortingOrder = tilemapData.OrderInLayer;
 
         return map;
     }
@@ -357,6 +428,53 @@ public class PrefabData
 }
 
 [System.Serializable]
+public class TilemapCollider2DData
+{
+    public bool IsTrigger;
+    public bool UsedByEffector;
+    public bool UsedByComposite;
+    public Vector2 Offset;
+}
+
+[System.Serializable]
+public class Rigidbody2DData
+{
+    public RigidbodyType2D BodyType;
+    public bool Simulated;
+    public bool UseAutoMass;
+    public float Mass;
+    public float LinearDrag;
+    public float AngularDrag;
+    public float GravityScale;
+    public CollisionDetectionMode2D CollisionDetection;
+    public RigidbodySleepMode2D SleepingMode;
+    public RigidbodyInterpolation2D Interpolate;
+    public RigidbodyConstraints2D Constraints;
+}
+
+[System.Serializable]
+public class CompositeCollider2DData
+{
+    public bool IsTrigger;
+    public bool UsedByEffector;
+    public Vector2 Offset;
+    public CompositeCollider2D.GeometryType GeometryType;
+    public CompositeCollider2D.GenerationType GenerationType;
+    public float VertexDistance;
+    public float EdgeRadius;
+}
+
+[System.Serializable]
+public class TilemapRendererData
+{
+    public TilemapRenderer.SortOrder SortOrder;
+    public TilemapRenderer.Mode Mode;
+    public TilemapRenderer.DetectChunkCullingBounds DetectChunkCullingBounds;
+    public int OrderinLayer;
+    public SpriteMaskInteraction SpriteMaskInteraction;
+}
+
+[System.Serializable]
 public class TilemapData
 {
     public string Name;
@@ -366,9 +484,14 @@ public class TilemapData
     public float AnimationFrameRate;
     public Color Color;
     public Vector3 TileAnchor;
-    public int OrderInLayer;
-    public bool IsHaveCollider;
+    public Tilemap.Orientation Orientation;
+
+    public TilemapCollider2DData TilemapCollider;
+    public TilemapRendererData TilemapRenderer;
+    public Rigidbody2DData RigidBody2D;
+    public CompositeCollider2DData CompositeCollider;
 }
+
 
 [System.Serializable]
 public class MapData
