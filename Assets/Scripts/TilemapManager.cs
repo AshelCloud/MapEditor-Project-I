@@ -219,6 +219,7 @@ public class TilemapManager : MonoBehaviour
         TilemapData tilemapData = new TilemapData()
         {
             Name = tilemap.name,
+            Tag = tilemap.tag,
             Position = tilemap.transform.position,
             Rotation = tilemap.transform.rotation,
             Scale = tilemap.transform.lossyScale,
@@ -438,6 +439,7 @@ public class TilemapManager : MonoBehaviour
         //정보 업데이트
         //데이터테이블 변경시 같이 변경해야함
         map.transform.name = mapData.Name;
+        map.tag = mapData.Tag;
         map.transform.position = mapData.Position;
         map.transform.rotation = mapData.Rotation;
         map.transform.localScale = mapData.Scale;
@@ -531,6 +533,7 @@ public class TilemapRendererData
 public class TilemapData
 {
     public string Name;
+    public string Tag;
     public Vector3 Position;
     public Quaternion Rotation;
     public Vector3 Scale;
