@@ -26,6 +26,8 @@ public class TilemapManager : MonoBehaviour
     [Header("Settings")]
     public string fileName;
     public string mapIndex;
+    public string previousMapName;
+    public string nextMapName;
     public Tilemap[] tilemaps;
     public GameObject playerStartPositionFlag;
     public GameObject playerEndPositionFlag;
@@ -36,18 +38,18 @@ public class TilemapManager : MonoBehaviour
     //체크용 Property
     private bool PlayerStartPositionSettingMode { get; set; }
     private bool PlayerEndPositionSettingMode { get; set; }
-
+    
     private void Awake()
     {
         mapDatas = new Dictionary<string, MapData>();
 
         tilemaps = transform.GetComponentsInChildren<Tilemap>();
 
-        //GUI용 플레이어 위치 오브젝트 로드
         if(playerStartPositionFlag == null)
         {
             playerStartPositionFlag = CreatePlayerFlag();
         }
+
         if(playerEndPositionFlag == null)
         {
             playerEndPositionFlag = CreatePlayerFlag(true);
@@ -56,6 +58,8 @@ public class TilemapManager : MonoBehaviour
         //GUI 표시
         fileName = "File Name";
         mapIndex = "Map Index";
+        previousMapName = "PreviousMapName";
+        nextMapName = "NextMapName";
     }
 
     //Flag 생성코드
@@ -79,10 +83,22 @@ public class TilemapManager : MonoBehaviour
         return go;
     }
 
+    private GameObject CreatePortal()
+    {
+        var portalResource = Resources.Load<GameObject>(PrefabFilePath + "Portal");
+        var go = Instantiate(portalResource, Vector3.zero, Quaternion.identity);
+
+        go.SetActive(false);
+
+        return go;
+    }
+
     private void OnGUI()
     {
         fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
         mapIndex = GUI.TextField(new Rect(210, 10, 200, 20), mapIndex, 25);
+        nextMapName = GUI.TextField(new Rect(210, 30, 200, 20), nextMapName, 25);
+        previousMapName = GUI.TextField(new Rect(210, 50, 200, 20), previousMapName, 25);
 
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {
@@ -301,7 +317,9 @@ public class TilemapManager : MonoBehaviour
             Tiles = tileDatas,
             Prefabs = prefabDatas,
             PlayerStartPosition = startPosition,
-            PlayerEndPosition = endPosition
+            PlayerEndPosition = endPosition,
+            NextMapName = nextMapName,
+            PreviousMapName = previousMapName
         };
 
         mapDatas.Add(mapIndex, mapData);
@@ -389,7 +407,7 @@ public class TilemapManager : MonoBehaviour
         renderer.mode = rendererData.Mode;
         renderer.detectChunkCullingBounds = rendererData.DetectChunkCullingBounds;
         renderer.sortingOrder = rendererData.OrderinLayer;
-       renderer.maskInteraction = rendererData.SpriteMaskInteraction;
+        renderer.maskInteraction = rendererData.SpriteMaskInteraction;
 
         if(mapData.TilemapCollider.IsNotNull)
         {
@@ -548,7 +566,6 @@ public class TilemapData
     public CompositeCollider2DData CompositeCollider;
 }
 
-
 [System.Serializable]
 public class MapData
 {
@@ -556,4 +573,6 @@ public class MapData
     public List<PrefabData> Prefabs;
     public Vector3 PlayerStartPosition;
     public Vector3 PlayerEndPosition;
+    public string NextMapName;
+    public string PreviousMapName;
 }
