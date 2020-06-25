@@ -6,89 +6,48 @@ using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 /*
-                                   맵에디터 주요 클래스
+                                   맵에디터 주요 클래스도 윤겨울
                                    후에 클래스 크기가 커지면 Util함수들 클래스 분할해서 사용
  */
 
-public class TilemapManager : MonoBehaviour
+public partial class TilemapManager : MonoBehaviour
 {
-    //경로
-    //웬만해서는 건드리지않기
-    private const string TileAssetFilePath = "TileAssets/";
-    private const string PrefabFilePath = "Prefabs/";
-
-    //Application.dataPath와 연동해서 사용
-    private const string JsonFilePath = "/Resources/MapJsons";
-
-    //저장될 Json파일이름, 타일맵들, 플레이어위치 GUI용 오브젝트
-    [Header("Settings")]
-    public string fileName;
-    public string mapIndex;
-    public string previousMapName;
-    public string nextMapName;
-    public Tilemap[] tilemaps;
-    public GameObject playerStartPositionFlag;
-    public GameObject playerEndPositionFlag;
-
-    //데이터 저장 Dictionary
-    private Dictionary<string, MapData> mapDatas;
-
-    //체크용 Property
-    private bool PlayerStartPositionSettingMode { get; set; }
-    private bool PlayerEndPositionSettingMode { get; set; }
-    
     private void Awake()
     {
         mapDatas = new Dictionary<string, MapData>();
 
         tilemaps = transform.GetComponentsInChildren<Tilemap>();
 
-        if(playerStartPositionFlag == null)
-        {
-            playerStartPositionFlag = CreatePlayerFlag();
-        }
-
-        if(playerEndPositionFlag == null)
-        {
-            playerEndPositionFlag = CreatePlayerFlag(true);
-        }
+        playerStartPositionFlags = new List<GameObject>();
+        playerEndPositionFlags = new List<GameObject>();
 
         //GUI 표시
         fileName = "File Name";
         mapIndex = "Map Index";
-        previousMapName = "PreviousMapName";
-        nextMapName = "NextMapName";
+        nextMapCount = "nextMapCount";
+        previousMapCount = "previousMapCount";
+
+        StartFlagCount = 1;
+        EndFlagCount = 1;
     }
 
     //Flag 생성코드
     //임시
     //필요시 수정
-    //isFliped는 EndPosition을 구별하기 위해 사용
-    private GameObject CreatePlayerFlag(bool isFliped = false)
+    private GameObject CreatePlayerFlag(bool isEndFlag = false)
     {
         var flagResource = Resources.Load<GameObject>(PrefabFilePath + "Flag");
         var go = Instantiate(flagResource, Vector3.zero, Quaternion.identity);
-        if(isFliped)
+        if (isEndFlag)
         {
             Vector3 scale = go.transform.lossyScale;
             scale.x *= -1;
 
             go.transform.localScale = scale;
         }
-
-        go.SetActive(false);
-
-        return go;
-    }
-
-    private GameObject CreatePortal()
-    {
-        var portalResource = Resources.Load<GameObject>(PrefabFilePath + "Portal");
-        var go = Instantiate(portalResource, Vector3.zero, Quaternion.identity);
-
-        go.SetActive(false);
 
         return go;
     }
@@ -97,8 +56,40 @@ public class TilemapManager : MonoBehaviour
     {
         fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
         mapIndex = GUI.TextField(new Rect(210, 10, 200, 20), mapIndex, 25);
-        nextMapName = GUI.TextField(new Rect(210, 30, 200, 20), nextMapName, 25);
-        previousMapName = GUI.TextField(new Rect(210, 50, 200, 20), previousMapName, 25);
+        nextMapCount = GUI.TextField(new Rect(210, 30, 100, 20), nextMapCount, 25);
+        previousMapCount = GUI.TextField(new Rect(210, 50, 100, 20), previousMapCount, 25);
+
+        int nCount =  int.TryParse(nextMapCount, out int n) ? n : 0;
+        int pCount = int.TryParse(previousMapCount, out int p) ? p : 0;
+
+        if (nCount != nextMapNames.Count)
+        {
+            nextMapNames = new List<string>();
+
+            for(int i = 0; i < nCount; i ++)
+            {
+                nextMapNames.Add("NextMapName_" + (i + 1).ToString());
+            }
+        }
+
+        if(pCount != previousMapNames.Count)
+        {
+            previousMapNames = new List<string>();
+
+            for(int i = 0; i < pCount; i ++)
+            {
+                previousMapNames.Add("PreviousMapName_" + (i + 1).ToString());
+            }
+        }
+
+        for(int i = 0; i < nextMapNames.Count; i ++)
+        {
+            nextMapNames[i] = GUI.TextField(new Rect(10, 70 + (i * 20), 200, 20), nextMapNames[i], 25);
+        }
+        for(int i = 0; i < previousMapNames.Count; i ++)
+        {
+            previousMapNames[i] = GUI.TextField(new Rect(210, 70 + (i * 20), 200, 20), previousMapNames[i], 25);
+        }
 
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {
@@ -116,54 +107,99 @@ public class TilemapManager : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerStartPositionSettingMode)
+        if (PlayerStartPositionSettingMode)
         {
-            FlagMove(playerStartPositionFlag.transform);
+            if( StartFlagCount > playerStartPositionFlags.Count )
+            {
+                GameObject flag = CreatePlayerFlag();
+                flag.GetComponentInChildren<TextMesh>().text = StartFlagCount.ToString();
 
-            if(Input.GetMouseButtonDown(0))
+                playerStartPositionFlags.Add(flag);
+            }
+
+            GameObject f = playerStartPositionFlags[StartFlagCount - 1];
+            if (f != null)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0;
+
+                f.transform.position = mousePosition;
+            }
+
+            if (Input.GetMouseButtonDown(0))
             {
                 PlayerStartPositionSettingMode = false;
+                StartFlagCount++;
             }
         }
 
-        if(PlayerEndPositionSettingMode)
+        if (PlayerEndPositionSettingMode)
         {
-            FlagMove(playerEndPositionFlag.transform);
+            if( EndFlagCount > playerEndPositionFlags.Count )
+            {
+                GameObject flag = CreatePlayerFlag(true);
+                flag.GetComponentInChildren<TextMesh>().text = EndFlagCount.ToString();
+                flag.GetComponentInChildren<TextMesh>().transform.localScale = new Vector3(-1f, 1f, 1f);
+
+                playerEndPositionFlags.Add(flag);
+            }
+
+            GameObject f = playerEndPositionFlags[EndFlagCount - 1];
+            if(f != null)
+            {
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                mousePosition.z = 0;
+
+                f.transform.position = mousePosition;
+            }
+            else
+            {
+                Debug.LogError("윤겨울에게 문의하세요");
+            }
 
             if (Input.GetMouseButtonDown(0))
             {
                 PlayerEndPositionSettingMode = false;
+                EndFlagCount++;
             }
         }
-    }
 
-    //플레이어 깃발 움직이는 함수
-    //임시
-    //필요시 수정
-    private void FlagMove(Transform flag)
-    {
-        flag.gameObject.SetActive(true);
+        //깃발 삭제 코드
+        if(Input.GetMouseButtonDown(1))
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D ray = Physics2D.Raycast(mousePosition, Vector2.zero);
 
-        //Input.mousePosition은 z가 -10으로 고정되기때문에 후처리
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
+            if(ray)
+            {
+                if(ray.collider.name.Contains("Flag"))
+                {
+                    Transform flag = ray.collider.transform;
 
-        flag.position = mousePosition;
-        //맵에디터 편의상 Grid에 딱맞게 Vector3Int로 변환
-        //현재 필요없다고 판단
-        //flag.position = Vector3ToVector3Int(mousePosition);
-    }
+                    if ( flag.lossyScale.x > 0f)
+                    {
+                        StartFlagCount --;
+                        playerStartPositionFlags.Remove(flag.gameObject);
+                    }
+                    else
+                    {
+                        EndFlagCount --;
+                        playerEndPositionFlags.Remove(flag.gameObject);
+                    }
 
-    //Tilemap 특성상 Vector3을 Vector3Int으로 바꿀일이 많아서 따로 함수작성
-    private Vector3Int Vector3ToVector3Int(Vector3 v)
-    {
-        Vector3Int vi = Vector3Int.zero;
+                    for(int i = 0; i < playerStartPositionFlags.Count; i ++)
+                    {
+                        playerStartPositionFlags[i].GetComponentInChildren<TextMesh>().text = (i + 1).ToString();
+                    }
+                    for(int i = 0; i < playerEndPositionFlags.Count; i ++)
+                    {
+                        playerEndPositionFlags[i].GetComponentInChildren<TextMesh>().text = (i + 1).ToString();
+                    }
 
-        vi.x = Mathf.FloorToInt(v.x);
-        vi.y = Mathf.FloorToInt(v.y);
-        vi.z = Mathf.FloorToInt(v.z);
-            
-        return vi;
+                    Destroy(ray.transform.gameObject);
+                }
+            }
+        }
     }
 
     public TilemapData CreateTilemapData(Tilemap tilemap)
@@ -182,15 +218,15 @@ public class TilemapManager : MonoBehaviour
 
         var tilemapCollider2D = tilemap.GetComponent<TilemapCollider2D>();
         TilemapCollider2DData tilemapCollider2DData = null;
-        if(tilemapCollider2D != null)
+        if (tilemapCollider2D != null)
         {
             tilemapCollider2DData = new TilemapCollider2DData()
             {
                 IsNotNull = true,
-                 IsTrigger = tilemapCollider2D.isTrigger,
-                 UsedByEffector = tilemapCollider2D.usedByEffector,
-                 UsedByComposite = tilemapCollider2D.usedByComposite,
-                 Offset = tilemapCollider2D.offset
+                IsTrigger = tilemapCollider2D.isTrigger,
+                UsedByEffector = tilemapCollider2D.usedByEffector,
+                UsedByComposite = tilemapCollider2D.usedByComposite,
+                Offset = tilemapCollider2D.offset
             };
         }
 
@@ -217,7 +253,7 @@ public class TilemapManager : MonoBehaviour
 
         var compositeCollider2D = tilemap.GetComponent<CompositeCollider2D>();
         CompositeCollider2DData compositeCollider2DData = null;
-        if(compositeCollider2D != null)
+        if (compositeCollider2D != null)
         {
             compositeCollider2DData = new CompositeCollider2DData()
             {
@@ -270,7 +306,7 @@ public class TilemapManager : MonoBehaviour
 
                 Vector3 place = tilemap.CellToWorld(localPlace);
 
-                if(tilemap.HasTile(localPlace))
+                if (tilemap.HasTile(localPlace))
                 {
                     var tile = tilemap.GetTile<Tile>(localPlace);
                     TileData tileData = new TileData
@@ -303,276 +339,40 @@ public class TilemapManager : MonoBehaviour
                 prefabDatas.Add(prefabData);
             }
         }
-        
+
         //보정
         //플레이어가 땅에 박히는것을 방지
         //TODO: 매직넘버 교체
-        Vector3 startPosition = playerStartPositionFlag.transform.position;
-        startPosition.y += 2f;
-        Vector3 endPosition = playerEndPositionFlag.transform.position;
-        endPosition.y += 2f;
+        List<Vector3> startPositions = new List<Vector3>();
+        List<Vector3> endPositions = new List<Vector3>();
+
+        for (int i = 0; i < playerStartPositionFlags.Count; i ++)
+        {
+            Vector3 position = playerStartPositionFlags[i].transform.position;
+            position.y += 2f;
+
+            startPositions.Add(position);
+        }
+        for(int i = 0; i < playerEndPositionFlags.Count; i ++)
+        {
+            Vector3 position = playerEndPositionFlags[i].transform.position;
+            position.y += 2f;
+
+            endPositions.Add(position);
+        }
 
         MapData mapData = new MapData
         {
             Tiles = tileDatas,
             Prefabs = prefabDatas,
-            PlayerStartPosition = startPosition,
-            PlayerEndPosition = endPosition,
-            NextMapName = nextMapName,
-            PreviousMapName = previousMapName
+            PlayerStartPosition = startPositions,
+            PlayerEndPosition = endPositions,
+            NextMapName = nextMapNames,
+            PreviousMapName = previousMapNames
         };
 
         mapDatas.Add(mapIndex, mapData);
 
         JsonManager.ObjectToJsonWithCreate(Application.dataPath + JsonFilePath, fileName, new Serialization<string, MapData>(mapDatas));
     }
-
-    //Json로드 함수
-    //테스트용
-    //본 프로젝트로 옮겨서 사용
-    public IEnumerator JsonToTilemap()
-    {
-        mapDatas = JsonManager.LoadJson<Serialization<string, MapData>>(Application.dataPath + JsonFilePath, fileName).ToDictionary();
-      
-        //현재 있는 맵들 다 삭제하고 진행
-        foreach (var tilemap in tilemaps)
-        {
-            if(tilemap != null)
-            {
-                Destroy(tilemap.gameObject);
-            }
-        }
-        tilemaps = null;
-
-        //Destroy가 느리기때문에 다 삭제될때까지 기다림
-        yield return new WaitUntil(() => transform.childCount == 0);
-
-        //데이터 로드
-        //데이터테이블 변경시 같이 변경해야함
-        foreach (var data in mapDatas)
-        {
-            foreach(var tile in data.Value.Tiles)
-            {
-                var tilemap = UpdateTilemapDataWithCreate(tile.BaseTilemap);
-
-                tilemap.SetTile(tile.LocalPlace, Resources.Load<Tile>(TileAssetFilePath + tile.Name));
-                tilemap.SetTransformMatrix(tile.LocalPlace, tile.Matrix);
-            }
-            foreach(var prefab in data.Value.Prefabs)
-            {
-                var tilemap = UpdateTilemapDataWithCreate(prefab.BaseTileMap);
-
-                GameObject go = Instantiate(Resources.Load<GameObject>(PrefabFilePath + prefab.Name), prefab.Position, prefab.Rotation, tilemap.transform);
-                go.transform.localScale = prefab.Scale;
-            }
-
-            //플레이어 생성코드
-            //임시
-            //필요시 삭제
-            var playerReosurce = Resources.Load<GameObject>(PrefabFilePath + "Player");
-            var player = Instantiate(playerReosurce, data.Value.PlayerStartPosition, Quaternion.identity);
-        }
-
-        yield return null;
-    }
-
-    //Tilemap 정보갱신
-    //JsonToTilemap함수에 필요
-    //테스트용
-    //본 프로젝트로 옮겨서 사용
-    public Tilemap UpdateTilemapDataWithCreate(TilemapData mapData)
-    {
-        var maps = transform.GetComponentsInChildren<Tilemap>();
-        
-        foreach(var m in maps)
-        {
-            //자식중에 같은게 있으면 리턴
-            if (m.name == mapData.Name)
-            {
-                return m;
-            }
-        }
-
-        Tilemap map;
-
-        //없으면 새로만들어서 정보업데이트후 리턴
-        GameObject go = new GameObject();
-        go.transform.SetParent(transform);
-
-        //TilemapRenderer를 추가하면 Tilemap도 추가됨
-        var renderer = go.AddComponent<TilemapRenderer>();
-        TilemapRendererData rendererData = mapData.TilemapRenderer;
-
-        renderer.sortOrder = rendererData.SortOrder;
-        renderer.mode = rendererData.Mode;
-        renderer.detectChunkCullingBounds = rendererData.DetectChunkCullingBounds;
-        renderer.sortingOrder = rendererData.OrderinLayer;
-        renderer.maskInteraction = rendererData.SpriteMaskInteraction;
-
-        if(mapData.TilemapCollider.IsNotNull)
-        {
-            var collider = go.AddComponent<TilemapCollider2D>();
-            var colliderData = mapData.TilemapCollider;
-
-            collider.isTrigger = colliderData.IsTrigger;
-            collider.usedByEffector = colliderData.UsedByEffector;
-            collider.usedByComposite = colliderData.UsedByComposite;
-            collider.offset = colliderData.Offset;
-        }
-
-        if(mapData.RigidBody2D.IsNotNull)
-        {
-            var rigidbody2D = go.AddComponent<Rigidbody2D>();
-            var rigidbodyData = mapData.RigidBody2D;
-
-            rigidbody2D.bodyType = rigidbodyData.BodyType;
-            rigidbody2D.simulated = rigidbodyData.Simulated;
-            rigidbody2D.useAutoMass = rigidbodyData.UseAutoMass;
-            rigidbody2D.mass = rigidbodyData.Mass;
-            rigidbody2D.drag = rigidbodyData.LinearDrag;
-            rigidbody2D.angularDrag = rigidbodyData.AngularDrag;
-            rigidbody2D.gravityScale = rigidbodyData.GravityScale;
-            rigidbody2D.collisionDetectionMode = rigidbodyData.CollisionDetection;
-            rigidbody2D.sleepMode = rigidbodyData.SleepingMode;
-            rigidbody2D.interpolation = rigidbodyData.Interpolate;
-            rigidbody2D.constraints = rigidbodyData.Constraints;
-        }
-
-        if(mapData.CompositeCollider.IsNotNull)
-        {
-            var collider = go.AddComponent<CompositeCollider2D>();
-            var colliderData = mapData.CompositeCollider;
-
-            collider.isTrigger = colliderData.IsTrigger;
-            collider.usedByEffector = colliderData.UsedByEffector;
-            collider.offset = colliderData.Offset;
-            collider.geometryType = colliderData.GeometryType;
-            collider.generationType = colliderData.GenerationType;
-            collider.vertexDistance = colliderData.VertexDistance;
-            collider.edgeRadius = colliderData.EdgeRadius;
-        }
-
-        map = go.GetComponent<Tilemap>();
-
-        //정보 업데이트
-        //데이터테이블 변경시 같이 변경해야함
-        map.transform.name = mapData.Name;
-        map.tag = mapData.Tag;
-        map.transform.position = mapData.Position;
-        map.transform.rotation = mapData.Rotation;
-        map.transform.localScale = mapData.Scale;
-        map.animationFrameRate = mapData.AnimationFrameRate;
-        map.color = mapData.Color;
-        map.tileAnchor = mapData.TileAnchor;
-        map.orientation = mapData.Orientation;
-
-        return map;
-    }
-}
-
-/*
-                                데이터 class
-                                추후에 데이터 테이블 참고해서 수정
-                                만일, 수정시 TilemapToJson, JsonToTilemap, UpdateTilemapDataWithCreate 함수 수정
- */
-
-[System.Serializable]
-public class TileData
-{
-    public string Name;
-    public Vector3 WorldPlace;
-    public Vector3Int LocalPlace;
-    public Matrix4x4 Matrix;
-    public TilemapData BaseTilemap;
-}
-
-[System.Serializable]
-public class PrefabData
-{
-    public string Name;
-    public Vector3 Position;
-    public Quaternion Rotation;
-    public Vector3 Scale;
-    public TilemapData BaseTileMap;
-}
-
-[System.Serializable]
-public class TilemapCollider2DData
-{
-    public bool IsNotNull;
-    public bool IsTrigger;
-    public bool UsedByEffector;
-    public bool UsedByComposite;
-    public Vector2 Offset;
-}
-
-[System.Serializable]
-public class Rigidbody2DData
-{
-    public bool IsNotNull;
-    public RigidbodyType2D BodyType;
-    public bool Simulated;
-    public bool UseAutoMass;
-    public float Mass;
-    public float LinearDrag;
-    public float AngularDrag;
-    public float GravityScale;
-    public CollisionDetectionMode2D CollisionDetection;
-    public RigidbodySleepMode2D SleepingMode;
-    public RigidbodyInterpolation2D Interpolate;
-    public RigidbodyConstraints2D Constraints;
-}
-
-[System.Serializable]
-public class CompositeCollider2DData
-{
-    public bool IsNotNull;
-    public bool IsTrigger;
-    public bool UsedByEffector;
-    public Vector2 Offset;
-    public CompositeCollider2D.GeometryType GeometryType;
-    public CompositeCollider2D.GenerationType GenerationType;
-    public float VertexDistance;
-    public float EdgeRadius;
-}
-
-[System.Serializable]
-public class TilemapRendererData
-{
-    public bool IsNotNull;
-    public TilemapRenderer.SortOrder SortOrder;
-    public TilemapRenderer.Mode Mode;
-    public TilemapRenderer.DetectChunkCullingBounds DetectChunkCullingBounds;
-    public int OrderinLayer;
-    public SpriteMaskInteraction SpriteMaskInteraction;
-}
-
-[System.Serializable]
-public class TilemapData
-{
-    public string Name;
-    public string Tag;
-    public Vector3 Position;
-    public Quaternion Rotation;
-    public Vector3 Scale;
-    public float AnimationFrameRate;
-    public Color Color;
-    public Vector3 TileAnchor;
-    public Tilemap.Orientation Orientation;
-
-    public TilemapCollider2DData TilemapCollider;
-    public TilemapRendererData TilemapRenderer;
-    public Rigidbody2DData RigidBody2D;
-    public CompositeCollider2DData CompositeCollider;
-}
-
-[System.Serializable]
-public class MapData
-{
-    public List<TileData> Tiles;
-    public List<PrefabData> Prefabs;
-    public Vector3 PlayerStartPosition;
-    public Vector3 PlayerEndPosition;
-    public string NextMapName;
-    public string PreviousMapName;
 }
