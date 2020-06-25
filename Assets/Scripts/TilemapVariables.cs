@@ -18,10 +18,10 @@ public partial class TilemapManager : MonoBehaviour
     public string mapIndex;
     public string previousMapCount;
     public string nextMapCount;
-    public List<string> previousMapNames;
+    public string previousMapName;
     public List<string> nextMapNames;
     public Tilemap[] tilemaps;
-    public List<GameObject> playerStartPositionFlags;
+    public GameObject playerStartPositionFlag;
     public List<GameObject> playerEndPositionFlags;
 
     //데이터 저장 Dictionary
@@ -30,8 +30,6 @@ public partial class TilemapManager : MonoBehaviour
     //체크용 Property
     private bool PlayerStartPositionSettingMode { get; set; }
     private bool PlayerEndPositionSettingMode { get; set; }
-
-    private int StartFlagCount { get; set; }
     private int EndFlagCount { get; set; }
 
 }

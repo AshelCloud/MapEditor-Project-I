@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 /*
-                                   맵에디터 주요 클래스도 윤겨울
+                                   맵에디터 주요 클래스
                                    후에 클래스 크기가 커지면 Util함수들 클래스 분할해서 사용
  */
 
@@ -20,8 +20,7 @@ public partial class TilemapManager : MonoBehaviour
         mapDatas = new Dictionary<string, MapData>();
 
         tilemaps = transform.GetComponentsInChildren<Tilemap>();
-
-        playerStartPositionFlags = new List<GameObject>();
+        
         playerEndPositionFlags = new List<GameObject>();
 
         //GUI 표시
@@ -29,8 +28,7 @@ public partial class TilemapManager : MonoBehaviour
         mapIndex = "Map Index";
         nextMapCount = "nextMapCount";
         previousMapCount = "previousMapCount";
-
-        StartFlagCount = 1;
+        
         EndFlagCount = 1;
     }
 
@@ -56,12 +54,9 @@ public partial class TilemapManager : MonoBehaviour
     {
         fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
         mapIndex = GUI.TextField(new Rect(210, 10, 200, 20), mapIndex, 25);
-        nextMapCount = GUI.TextField(new Rect(210, 30, 100, 20), nextMapCount, 25);
-        previousMapCount = GUI.TextField(new Rect(210, 50, 100, 20), previousMapCount, 25);
+        nextMapCount = GUI.TextField(new Rect(210, 30, 150, 20), nextMapCount, 25);
 
         int nCount =  int.TryParse(nextMapCount, out int n) ? n : 0;
-        int pCount = int.TryParse(previousMapCount, out int p) ? p : 0;
-
         if (nCount != nextMapNames.Count)
         {
             nextMapNames = new List<string>();
@@ -72,23 +67,9 @@ public partial class TilemapManager : MonoBehaviour
             }
         }
 
-        if(pCount != previousMapNames.Count)
-        {
-            previousMapNames = new List<string>();
-
-            for(int i = 0; i < pCount; i ++)
-            {
-                previousMapNames.Add("PreviousMapName_" + (i + 1).ToString());
-            }
-        }
-
         for(int i = 0; i < nextMapNames.Count; i ++)
         {
             nextMapNames[i] = GUI.TextField(new Rect(10, 70 + (i * 20), 200, 20), nextMapNames[i], 25);
-        }
-        for(int i = 0; i < previousMapNames.Count; i ++)
-        {
-            previousMapNames[i] = GUI.TextField(new Rect(210, 70 + (i * 20), 200, 20), previousMapNames[i], 25);
         }
 
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
@@ -109,27 +90,23 @@ public partial class TilemapManager : MonoBehaviour
     {
         if (PlayerStartPositionSettingMode)
         {
-            if( StartFlagCount > playerStartPositionFlags.Count )
+            if(playerStartPositionFlag == null)
             {
-                GameObject flag = CreatePlayerFlag();
-                flag.GetComponentInChildren<TextMesh>().text = StartFlagCount.ToString();
-
-                playerStartPositionFlags.Add(flag);
+                playerStartPositionFlag = CreatePlayerFlag();
+                playerStartPositionFlag.GetComponentInChildren<TextMesh>().text = "1";
             }
 
-            GameObject f = playerStartPositionFlags[StartFlagCount - 1];
-            if (f != null)
+            if (playerStartPositionFlag != null)
             {
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 mousePosition.z = 0;
 
-                f.transform.position = mousePosition;
+                playerStartPositionFlag.transform.position = mousePosition;
             }
 
             if (Input.GetMouseButtonDown(0))
             {
                 PlayerStartPositionSettingMode = false;
-                StartFlagCount++;
             }
         }
 
@@ -178,8 +155,7 @@ public partial class TilemapManager : MonoBehaviour
 
                     if ( flag.lossyScale.x > 0f)
                     {
-                        StartFlagCount --;
-                        playerStartPositionFlags.Remove(flag.gameObject);
+                        Destroy(playerStartPositionFlag);
                     }
                     else
                     {
@@ -187,10 +163,6 @@ public partial class TilemapManager : MonoBehaviour
                         playerEndPositionFlags.Remove(flag.gameObject);
                     }
 
-                    for(int i = 0; i < playerStartPositionFlags.Count; i ++)
-                    {
-                        playerStartPositionFlags[i].GetComponentInChildren<TextMesh>().text = (i + 1).ToString();
-                    }
                     for(int i = 0; i < playerEndPositionFlags.Count; i ++)
                     {
                         playerEndPositionFlags[i].GetComponentInChildren<TextMesh>().text = (i + 1).ToString();
@@ -343,16 +315,9 @@ public partial class TilemapManager : MonoBehaviour
         //보정
         //플레이어가 땅에 박히는것을 방지
         //TODO: 매직넘버 교체
-        List<Vector3> startPositions = new List<Vector3>();
+        Vector3 startPosition = playerStartPositionFlag.transform.position;
+
         List<Vector3> endPositions = new List<Vector3>();
-
-        for (int i = 0; i < playerStartPositionFlags.Count; i ++)
-        {
-            Vector3 position = playerStartPositionFlags[i].transform.position;
-            position.y += 2f;
-
-            startPositions.Add(position);
-        }
         for(int i = 0; i < playerEndPositionFlags.Count; i ++)
         {
             Vector3 position = playerEndPositionFlags[i].transform.position;
@@ -365,10 +330,10 @@ public partial class TilemapManager : MonoBehaviour
         {
             Tiles = tileDatas,
             Prefabs = prefabDatas,
-            PlayerStartPosition = startPositions,
+            PlayerStartPosition = startPosition,
             PlayerEndPosition = endPositions,
             NextMapName = nextMapNames,
-            PreviousMapName = previousMapNames
+            PreviousMapName = previousMapName
         };
 
         mapDatas.Add(mapIndex, mapData);
