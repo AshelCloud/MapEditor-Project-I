@@ -27,8 +27,9 @@ public partial class TilemapManager : MonoBehaviour
         fileName = "File Name";
         mapIndex = "Map Index";
         nextMapCount = "nextMapCount";
-        previousMapCount = "previousMapCount";
         
+        previousMapName = "PreviousMapName";
+
         EndFlagCount = 1;
     }
 
@@ -71,6 +72,7 @@ public partial class TilemapManager : MonoBehaviour
         {
             nextMapNames[i] = GUI.TextField(new Rect(10, 70 + (i * 20), 200, 20), nextMapNames[i], 25);
         }
+        previousMapName = GUI.TextField(new Rect(210, 70, 200, 20), previousMapName, 25);
 
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {

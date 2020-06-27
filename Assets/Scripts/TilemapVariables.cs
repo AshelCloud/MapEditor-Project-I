@@ -16,7 +16,6 @@ public partial class TilemapManager : MonoBehaviour
     [Header("Settings")]
     public string fileName;
     public string mapIndex;
-    public string previousMapCount;
     public string nextMapCount;
     public string previousMapName;
     public List<string> nextMapNames;
