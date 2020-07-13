@@ -19,6 +19,20 @@ public class TileData
 }
 
 [System.Serializable]
+public class BoxCollider2DData
+{
+    public bool IsNotNull;
+    public PhysicsMaterial2D Material;
+    public bool IsTrigger;
+    public bool UsedByEffector;
+    public bool UsedByComposite;
+    public bool AutoTiling;
+    public Vector2 Offest;
+    public Vector2 Size;
+    public float EdgeRadius;
+}
+
+[System.Serializable]
 public class PrefabData
 {
     public string Name;
@@ -26,6 +40,8 @@ public class PrefabData
     public Quaternion Rotation;
     public Vector3 Scale;
     public TilemapData BaseTileMap;
+
+    public BoxCollider2DData BoxCollider;
 }
 
 [System.Serializable]

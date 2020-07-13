@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
@@ -321,13 +322,34 @@ public partial class TilemapManager : MonoBehaviour
                 if (trans == null) { continue; }
                 if (trans.GetComponent<Tilemap>() != null) { continue; }
 
+                var boxCollider = trans.GetComponent<BoxCollider2D>();
+                BoxCollider2DData boxColliderData = null;
+
+                if(boxCollider != null)
+                {
+                    boxColliderData = new BoxCollider2DData()
+                    {
+                        IsNotNull = true,
+                        Material = boxCollider.sharedMaterial,
+                        IsTrigger = boxCollider.isTrigger,
+                        UsedByEffector = boxCollider.usedByEffector,
+                        UsedByComposite = boxCollider.usedByComposite,
+                        AutoTiling = boxCollider.autoTiling,
+                        Offest = boxCollider.offset,
+                        Size = boxCollider.size,
+                        EdgeRadius = boxCollider.edgeRadius
+                    };
+                }
+
                 PrefabData prefabData = new PrefabData
                 {
                     Name = trans.name,
                     Position = trans.position,
                     Rotation = trans.rotation,
                     Scale = trans.lossyScale,
-                    BaseTileMap = tilemapData
+                    BaseTileMap = tilemapData,
+
+                    BoxCollider = boxColliderData
                 };
 
                 prefabDatas.Add(prefabData);
