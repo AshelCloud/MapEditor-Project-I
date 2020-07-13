@@ -80,6 +80,21 @@ public class TilemapRendererData
 }
 
 [System.Serializable]
+public class PlatformEffectorData
+{
+    public bool IsNotNull;
+    public bool UseColliderMask;
+    public int ColliderMask;
+    public float RotationalOffset;
+    public bool UseOneWay;
+    public bool UseOneWayGroup;
+    public float SurfaceArc;
+    public bool UseSideFriction;
+    public bool UseSideBounce;
+    public float SideArc;
+}
+
+[System.Serializable]
 public class TilemapData
 {
     public string Name;
@@ -96,6 +111,7 @@ public class TilemapData
     public TilemapRendererData TilemapRenderer;
     public Rigidbody2DData RigidBody2D;
     public CompositeCollider2DData CompositeCollider;
+    public PlatformEffectorData PlatformEffector;
 }
 
 [System.Serializable]
