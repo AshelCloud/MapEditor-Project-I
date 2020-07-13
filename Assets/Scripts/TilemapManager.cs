@@ -242,6 +242,25 @@ public partial class TilemapManager : MonoBehaviour
             };
         }
 
+        var platformEffector = tilemap.GetComponent<PlatformEffector2D>();
+        PlatformEffectorData platformEffectorData = null;
+        if(platformEffector != null)
+        {
+            platformEffectorData = new PlatformEffectorData()
+            {
+                IsNotNull = true,
+                UseColliderMask = platformEffector.useColliderMask,
+                ColliderMask = platformEffector.colliderMask,
+                RotationalOffset = platformEffector.rotationalOffset,
+                UseOneWay = platformEffector.useOneWay,
+                UseOneWayGroup = platformEffector.useOneWayGrouping,
+                SurfaceArc = platformEffector.surfaceArc,
+                UseSideFriction = platformEffector.useSideFriction,
+                UseSideBounce = platformEffector.useSideBounce,
+                SideArc = platformEffector.sideArc
+            };
+        }
+
         TilemapData tilemapData = new TilemapData()
         {
             Name = tilemap.name,
@@ -256,7 +275,8 @@ public partial class TilemapManager : MonoBehaviour
             TilemapRenderer = rendererData,
             TilemapCollider = tilemapCollider2DData,
             RigidBody2D = rigidbody2DData,
-            CompositeCollider = compositeCollider2DData
+            CompositeCollider = compositeCollider2DData,
+            PlatformEffector = platformEffectorData
         };
 
         return tilemapData;
