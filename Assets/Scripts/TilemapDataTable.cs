@@ -41,6 +41,8 @@ public class PrefabData
     public Vector3 Scale;
     public TilemapData BaseTileMap;
 
+    public string Tag;
+
     public BoxCollider2DData BoxCollider;
 }
 
