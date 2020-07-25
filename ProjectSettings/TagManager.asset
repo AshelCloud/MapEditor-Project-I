@@ -9,6 +9,7 @@ TagManager:
   - Platform
   - Climb
   - Portal
+  - Object
   layers:
   - Default
   - TransparentFX
