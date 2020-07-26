@@ -365,7 +365,7 @@ public partial class TilemapManager : MonoBehaviour
         for(int i = 0; i < playerEndPositionFlags.Count; i ++)
         {
             Vector3 position = playerEndPositionFlags[i].transform.position;
-            position.y += 0.5f;
+            position.y += 2f;
 
             endPositions.Add(position);
         }
