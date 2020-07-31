@@ -126,6 +126,7 @@ public class TilemapData
     public Tilemap.Orientation Orientation;
 
     public TilemapCollider2DData TilemapCollider;
+    public BoxCollider2DData BoxCollider;
     public TilemapRendererData TilemapRenderer;
     public Rigidbody2DData RigidBody2D;
     public CompositeCollider2DData CompositeCollider;
