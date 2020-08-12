@@ -37,14 +37,15 @@ public partial class TilemapManager : MonoBehaviour
     //Flag 생성코드
     //임시
     //필요시 수정
-    private GameObject CreatePlayerFlag(bool isEndFlag = false)
+    private GameObject CreatePlayer(bool isEndFlag = false)
     {
-        var flagResource = Resources.Load<GameObject>(PrefabFilePath + "Flag");
+        var flagResource = Resources.Load<GameObject>(PrefabFilePath + "Player");
         var go = Instantiate(flagResource, Vector3.zero, Quaternion.identity);
         if (isEndFlag)
         {
             Vector3 scale = go.transform.lossyScale;
             scale.x *= -1;
+            go.GetComponent<SpriteRenderer>().color = Color.red;
 
             go.transform.localScale = scale;
         }
@@ -95,7 +96,7 @@ public partial class TilemapManager : MonoBehaviour
         {
             if(playerStartPositionFlag == null)
             {
-                playerStartPositionFlag = CreatePlayerFlag();
+                playerStartPositionFlag = CreatePlayer();
                 playerStartPositionFlag.GetComponentInChildren<TextMesh>().text = "1";
             }
 
@@ -117,7 +118,7 @@ public partial class TilemapManager : MonoBehaviour
         {
             if( EndFlagCount > playerEndPositionFlags.Count )
             {
-                GameObject flag = CreatePlayerFlag(true);
+                GameObject flag = CreatePlayer(true);
                 flag.GetComponentInChildren<TextMesh>().text = EndFlagCount.ToString();
                 flag.GetComponentInChildren<TextMesh>().transform.localScale = new Vector3(-1f, 1f, 1f);
 
@@ -375,16 +376,12 @@ public partial class TilemapManager : MonoBehaviour
             }
         }
 
-        //보정
-        //플레이어가 땅에 박히는것을 방지
-        //TODO: 매직넘버 교체
         Vector3 startPosition = playerStartPositionFlag.transform.position;
 
         List<Vector3> endPositions = new List<Vector3>();
         for(int i = 0; i < playerEndPositionFlags.Count; i ++)
         {
             Vector3 position = playerEndPositionFlags[i].transform.position;
-            position.y += 2f;
 
             endPositions.Add(position);
         }
