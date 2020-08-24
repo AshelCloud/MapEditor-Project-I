@@ -40,8 +40,19 @@ public class PrefabData
     public Quaternion Rotation;
     public Vector3 Scale;
     public TilemapData BaseTileMap;
-
     public string Tag;
+}
+
+[System.Serializable]
+public class PortalData
+{
+    public Vector3 Position;
+    public Quaternion Rotation;
+    public Vector3 Scale;
+
+    public TilemapData BaseTileMap;
+
+    public Vector3 LinkingPosition;
 
     public BoxCollider2DData BoxCollider;
 }

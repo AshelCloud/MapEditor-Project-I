@@ -358,8 +358,7 @@ public partial class TilemapManager : MonoBehaviour
                     Rotation = trans.rotation,
                     Scale = trans.lossyScale,
                     BaseTileMap = tilemapData,
-                    Tag = trans.tag,
-                    BoxCollider = boxColliderData
+                    Tag = trans.tag
                 };
 
                 prefabDatas.Add(prefabData);
