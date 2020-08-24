@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using TMPro;
-using UnityEditor.Experimental.UIElements.GraphView;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 /*
                                    맵에디터 주요 클래스
@@ -79,11 +74,6 @@ public partial class TilemapManager : MonoBehaviour
         if (GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
         {
             TilemapToJson();
-        }
-
-        if (GUI.Button(new Rect(10, 50, 200, 20), "LoadTilemap"))
-        {
-            StartCoroutine(JsonToTilemap());
         }
 
         PlayerStartPositionSettingMode = GUI.Toggle(new Rect(650, 10, 200, 30), PlayerStartPositionSettingMode, "PlayerStartPositionSettingMode");
