@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Renewal
 {
@@ -8,9 +9,19 @@ namespace Renewal
     {
         #region GUIVariables
         public string fileName;
-        public string mapIndex;
-        public string nextMapCount;
-        public string previousMapName;
+        public string mapName;
+        #endregion
+
+        #region TilemapVariables
+        Tilemap[] curTilemaps;
+        #endregion
+
+        #region Data
+        private Dictionary<string, MapData> mapData;
+        #endregion
+
+        #region Path
+        private const string JsonFilePath = "/Resources/MapJsons";
         #endregion
     }
 }

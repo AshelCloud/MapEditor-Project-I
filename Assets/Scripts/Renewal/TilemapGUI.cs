@@ -9,8 +9,12 @@ namespace Renewal
         private void OnGUI()
         {
             fileName = GUI.TextField(new Rect(10, 10, 200, 20), fileName, 25);
-            mapIndex = GUI.TextField(new Rect(210, 10, 200, 20), mapIndex, 25);
-            nextMapCount = GUI.TextField(new Rect(210, 30, 150, 20), nextMapCount, 25);
+            mapName = GUI.TextField(new Rect(210, 10, 200, 20), mapName, 25);
+
+            if(GUI.Button(new Rect(10, 30, 200, 20), "CreateJson"))
+            {
+                TilemapToJson();
+            }
         }
     }
 }

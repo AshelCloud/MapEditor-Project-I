@@ -41,18 +41,22 @@ public class PrefabData
     public Vector3 Scale;
     public TilemapData BaseTileMap;
     public string Tag;
+
+    public BoxCollider2DData BoxCollider2DData;
 }
 
 [System.Serializable]
 public class PortalData
 {
+    public string Name;
     public Vector3 Position;
     public Quaternion Rotation;
     public Vector3 Scale;
 
     public TilemapData BaseTileMap;
 
-    public Vector3 LinkingPosition;
+    public string TargetMap;
+    public string LinkingPortalName;
 
     public BoxCollider2DData BoxCollider;
 }
@@ -149,8 +153,5 @@ public class MapData
 {
     public List<TileData> Tiles;
     public List<PrefabData> Prefabs;
-    public Vector3 PlayerStartPosition;
-    public List<Vector3> PlayerEndPosition;
-    public List<string> NextMapName;
-    public string PreviousMapName;
+    public List<PortalData> Portals;
 }
