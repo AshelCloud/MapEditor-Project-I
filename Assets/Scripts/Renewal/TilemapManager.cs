@@ -44,6 +44,45 @@ namespace Renewal
                     }
                 }
 
+                var polyCollider = tilemap.GetComponent<PolygonCollider2D>();
+                PolygonCollider2DData polyColliderData = null;
+
+                if (polyCollider != null)
+                {
+                    Debug.Log(gameObject.name);
+                    List<Vector2[]> p = new List<Vector2[]>();
+                    for (int i = 0; i < polyCollider.pathCount; i++)
+                    {
+                        p.Add(polyCollider.GetPath(i));
+                    }
+                    polyColliderData = new PolygonCollider2DData()
+                    {
+                        IsNotNull = true,
+                        Material = polyCollider.sharedMaterial,
+                        IsTrigger = polyCollider.isTrigger,
+                        UsedByEffector = polyCollider.usedByEffector,
+                        UsedByComposite = polyCollider.usedByComposite,
+                        AutoTiling = polyCollider.autoTiling,
+                        Offset = polyCollider.offset,
+                        PathCount = polyCollider.pathCount,
+                        Paths = p
+                    };
+
+                    PrefabData prefabData = new PrefabData
+                    {
+                        Name = polyCollider.name,
+                        Position = polyCollider.transform.position,
+                        Rotation = polyCollider.transform.rotation,
+                        Scale = polyCollider.transform.lossyScale,
+                        BaseTileMap = tilemapData,
+                        Tag = polyCollider.tag,
+                        BoxCollider2DData = null,
+                        PolygonCollider = polyColliderData
+                    };
+
+                    prefabDatas.Add(prefabData);
+                }
+
                 foreach (Transform trans in tilemap.GetComponentsInChildren<Transform>())
                 {
                     if (trans == null) { continue; }
@@ -98,7 +137,7 @@ namespace Renewal
                         Scale = trans.lossyScale,
                         BaseTileMap = tilemapData,
                         Tag = trans.tag,
-                        BoxCollider2DData = boxColliderData
+                        BoxCollider2DData = boxColliderData,
                     };
 
                     prefabDatas.Add(prefabData);

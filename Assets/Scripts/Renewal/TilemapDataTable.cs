@@ -43,6 +43,7 @@ public class PrefabData
     public string Tag;
 
     public BoxCollider2DData BoxCollider2DData;
+    public PolygonCollider2DData PolygonCollider;
 }
 
 [System.Serializable]
@@ -125,6 +126,20 @@ public class PlatformEffectorData
     public bool UseSideFriction;
     public bool UseSideBounce;
     public float SideArc;
+}
+
+[System.Serializable]
+public class PolygonCollider2DData
+{
+    public bool IsNotNull;
+    public PhysicsMaterial2D Material;
+    public bool IsTrigger;
+    public bool UsedByEffector;
+    public bool UsedByComposite;
+    public bool AutoTiling;
+    public Vector2 Offset;
+    public int PathCount;
+    public List<Vector2[]> Paths;
 }
 
 [System.Serializable]
