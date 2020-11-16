@@ -19,6 +19,7 @@ namespace Renewal
             List<TileData> tileDatas = new List<TileData>();
             List<PrefabData> prefabDatas = new List<PrefabData>();
             List<PortalData> portalDatas = new List<PortalData>();
+            EdgeData edgeData = null;
 
             foreach (Tilemap tilemap in curTilemaps)
             {
@@ -49,7 +50,6 @@ namespace Renewal
 
                 if (polyCollider != null)
                 {
-                    Debug.Log(gameObject.name);
                     List<Vector2[]> p = new List<Vector2[]>();
                     for (int i = 0; i < polyCollider.pathCount; i++)
                     {
@@ -68,19 +68,10 @@ namespace Renewal
                         Paths = p
                     };
 
-                    PrefabData prefabData = new PrefabData
+                    EdgeData prefabData = new EdgeData
                     {
-                        Name = polyCollider.name,
-                        Position = polyCollider.transform.position,
-                        Rotation = polyCollider.transform.rotation,
-                        Scale = polyCollider.transform.lossyScale,
-                        BaseTileMap = tilemapData,
-                        Tag = polyCollider.tag,
-                        BoxCollider2DData = null,
                         PolygonCollider = polyColliderData
                     };
-
-                    prefabDatas.Add(prefabData);
                 }
 
                 foreach (Transform trans in tilemap.GetComponentsInChildren<Transform>())
@@ -148,8 +139,13 @@ namespace Renewal
             {
                 Tiles = tileDatas,
                 Prefabs = prefabDatas,
-                Portals = portalDatas
+                Portals = portalDatas,
             };
+
+            if(edgeData != null)
+            {
+                mapData.Edge = edgeData;
+            }
 
             this.mapData.Add(mapName, mapData);
             JsonManager.ObjectToJsonWithCreate(Application.dataPath + JsonFilePath, fileName, new Serialization<string, MapData>(this.mapData));

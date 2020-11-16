@@ -43,6 +43,11 @@ public class PrefabData
     public string Tag;
 
     public BoxCollider2DData BoxCollider2DData;
+}
+
+[System.Serializable]
+public class EdgeData
+{
     public PolygonCollider2DData PolygonCollider;
 }
 
@@ -169,4 +174,5 @@ public class MapData
     public List<TileData> Tiles;
     public List<PrefabData> Prefabs;
     public List<PortalData> Portals;
+    public EdgeData Edge;
 }
